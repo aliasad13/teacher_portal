@@ -1,0 +1,40 @@
+<div class="login-container">
+  <h2 class="login-title">tailwebs.</h2>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "login-form" }) do |f| %>
+    <div class="login-field">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Username", class: 'input'%>
+    </div>
+
+    <div class="login-field">
+      <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password", class: 'input' %>
+    </div>
+
+    <% if devise_mapping.rememberable? %>
+      <div class="login-field">
+        <div class="remember">
+        <%= f.check_box :remember_me, class: 'input-check'%>
+        <%= f.label :remember_me, class: "remember-me" %>
+        </div>
+        <div>
+          <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+          <%= link_to "Forgot your password?", new_password_path(resource_name), class: "remember-me" %><br />
+        <% end %>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="login-actions">
+      <%= f.submit "Login", class: "login-button" %>
+
+        <% if devise_mapping.registerable? && controller_name != 'registrations' %>
+          <%= link_to "Sign up", new_registration_path(resource_name), class: 'sign-up-button', id: 'sign-up-link'%><br />
+        <% end %>
+
+
+    </div>
+  <% end %>
+
+  <%= render "devise/shared/links", class: "login-links" %>
+</div>
+

@@ -13,3 +13,149 @@
  *= require_tree .
  *= require_self
  */
+
+/* Login Container */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+/* Login Title */
+.login-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #d0021b;
+    margin-bottom: 40px;
+}
+
+/* Login Form */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+/* Login Field */
+.login-field {
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-field input {
+    width: 90%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Remember Me */
+.remember-me {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Login Button */
+.login-button {
+    width: 90%;
+    padding: 12px;
+    display: flex;
+    background-color: #0a0102;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+
+}
+
+.sign-up-button {
+    width: 82%;
+    padding: 12px;
+    display: flex;
+    background-color: #0a0102;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+
+}
+
+
+/* Login Links */
+.login-links {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+.login-links a {
+    color: #0a0102;
+    text-decoration: none;
+}
+
+.input-check{
+    width: 20px !important;
+}
+
+.login-actions{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#sign-up-link{
+    color: white;
+    text-decoration: none;
+    font-family: sans-serif;
+}
+
+/* Errors */
+.errors {
+    width: 300px;
+    margin-bottom: 20px;
+}
+
+#error_explanation {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    padding: 16px;
+    color: #721c24;
+}
+
+#error_explanation h2 {
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+#error_explanation ul {
+    margin-bottom: 0;
+    padding-left: 16px;
+}
+
+#error_explanation li {
+    margin-bottom: 4px;
+}
