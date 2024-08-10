@@ -2,13 +2,6 @@
 class StudentDetailsController < ApplicationController
   before_action :set_student_detail, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @student_details = StudentDetail.all
-  end
-
-  def show
-  end
-
   def new
     @student_detail = StudentDetail.new
   end
@@ -44,7 +37,8 @@ class StudentDetailsController < ApplicationController
     if @student_detail.update(student_detail_params)
       redirect_to teacher_dashboard_path, notice: 'Student mark was successfully updated.'
     else
-      render :edit
+      format.html { render :edit }
+      format.js
     end
   end
 
