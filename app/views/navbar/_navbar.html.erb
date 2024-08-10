@@ -2,17 +2,29 @@
   <h1 class="logo">tailwebs.</h1>
   <nav>
     <% if user_signed_in? %>
-    <%= link_to 'Home', '#' %>
-    <%= link_to 'Logout', destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure you want to log out ?' } %>
-      <% end %>
+      <div class="dropdown">
+        <div class="dropbtn"><i class="fa-regular fa-user"></i></div>
+        <div class="dropdown-content">
+          <%= link_to '#' do%>
+            <i class="fa-solid fa-house"></i> <span class="space"></span>Home
+        <% end %>
+          <%= link_to destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure you want to log out?' } do%>
+            <i class="fa-solid fa-door-open"></i><span class="space"></span> Sign Out
+          <% end %>
+
+        </div>
+      </div>
+    <% end %>
   </nav>
 </header>
+
 <% if notice.present? %>
   <div class="notice" id="notice">
     <span><%= notice %></span>
     <button class="close-button" onclick="fadeOut('notice')">&times;</button>
   </div>
 <% end %>
+
 <% if alert.present? %>
   <div class="alert" id="alert">
     <span><%= alert %></span>
@@ -36,3 +48,49 @@
         }, 50);
     }
 </script>
+
+<style>
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropbtn {
+        padding: 10px;
+        border: none;
+        cursor: pointer;
+        background-color: white;
+        border-radius: 40% 40% 0 0;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        border-top-left-radius: 0;
+    }
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        margin-left: 0;
+        border-radius: 0;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #ddd;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    }
+</style>

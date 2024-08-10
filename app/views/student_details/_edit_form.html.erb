@@ -7,6 +7,8 @@
     <%= form.text_field :name, required: true %>
   </div>
 
+  <%= hidden_field_tag :page, params[:page] %>
+
   <div class="form-group">
     <%= form.label :subject %>
     <%= form.text_field :subject, required: true %>

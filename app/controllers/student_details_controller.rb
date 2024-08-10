@@ -7,11 +7,10 @@ class StudentDetailsController < ApplicationController
 
   def create
     existing_student = StudentDetail.find_by(name: student_detail_params[:name], subject: student_detail_params[:subject])
-
     if existing_student
       new_mark = existing_student.mark + student_detail_params[:mark].to_i
       if existing_student.update(mark: new_mark)
-        redirect_to teacher_dashboard_path, notice: 'Student marks were successfully updated.'
+        redirect_to teacher_dashboard_path(page: params[:page]), notice: 'Student marks were successfully updated.'
       else
         render json: { success: false, errors: existing_student.errors.full_messages }
       end
@@ -19,7 +18,7 @@ class StudentDetailsController < ApplicationController
       @student_detail = StudentDetail.new(student_detail_params)
 
       if @student_detail.save
-        redirect_to teacher_dashboard_path, notice: 'Student mark was successfully added.'
+        redirect_to teacher_dashboard_path(page: params[:page]), notice: 'Student mark was successfully added.'
       else
         render json: { success: false, errors: @student_detail.errors.full_messages }
       end
@@ -34,7 +33,7 @@ class StudentDetailsController < ApplicationController
 
   def update
     if @student_detail.update(student_detail_params)
-      redirect_to teacher_dashboard_path, notice: 'Student mark was successfully updated.'
+      redirect_to teacher_dashboard_path(page: params[:page]), notice: 'Student marks were successfully updated.'
     else
       format.html { render :edit }
       format.js
@@ -43,7 +42,7 @@ class StudentDetailsController < ApplicationController
 
   def destroy
     @student_detail.destroy
-    redirect_to teacher_dashboard_path, notice: 'Student mark was successfully deleted.'
+    redirect_to teacher_dashboard_path(page: params[:page]), notice: 'Student mark was successfully deleted.'
   end
 
   private

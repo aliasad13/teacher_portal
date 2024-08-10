@@ -24,8 +24,8 @@
           <div class="dropdown">
             <button class="dropbtn">•••</button>
             <div class="dropdown-content">
-              <%= link_to 'Edit', edit_student_detail_path(student), remote: true, class: 'edit-link', data: { id: student.id } %>
-              <%= link_to 'Delete', student_detail_path(student),
+              <%= link_to 'Edit', edit_student_detail_path(student, page: params[:page]), remote: true, class: 'edit-link'%>
+              <%= link_to 'Delete', student_detail_path(student, page: params[:page]),
                           method: :delete,
                           data: { confirm: 'Are you sure you want to delete this student detail?' } %>
             </div>
@@ -55,6 +55,8 @@
           <%= form.text_field :name, required: true %>
         </div>
 
+        <%= hidden_field_tag :page, params[:page] %>
+
         <div class="form-group">
           <%= form.label :subject %>
           <%= form.text_field :subject, required: true %>
@@ -62,7 +64,7 @@
 
         <div class="form-group">
           <%= form.label :mark %>
-          <%= form.number_field :mark, required: true, min: 0, max: 100 %>
+          <%= form.number_field :mark, required: true, min: 0 %>
         </div>
 
         <%= form.submit 'Add', class: 'add-button' %>

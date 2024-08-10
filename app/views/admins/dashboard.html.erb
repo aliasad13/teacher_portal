@@ -4,7 +4,8 @@
     <thead>
     <tr>
       <th>Sl. No.</th>
-      <th>Name</th>
+      <th>Username</th>
+      <th>Mail</th>
       <th>Role</th>
       <th></th>
     </tr>
@@ -14,7 +15,10 @@
       <tr>
         <td><%= @users.offset_value + index + 1 %></td>
         <td>
-          <span class="user-icon"><%= user.email[0].upcase %></span>
+          <span class="user-icon"><%= user.username[0].upcase %></span>
+          <%= user.username %>
+        </td>
+        <td>
           <%= user.email %>
         </td>
         <td><%= user.role %></td>
