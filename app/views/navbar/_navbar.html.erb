@@ -1,0 +1,38 @@
+<header>
+  <h1 class="logo">tailwebs.</h1>
+  <nav>
+    <% if user_signed_in? %>
+    <%= link_to 'Home', '#' %>
+    <%= link_to 'Logout', destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure you want to log out ?' } %>
+      <% end %>
+  </nav>
+</header>
+<% if notice.present? %>
+  <div class="notice" id="notice">
+    <span><%= notice %></span>
+    <button class="close-button" onclick="fadeOut('notice')">&times;</button>
+  </div>
+<% end %>
+<% if alert.present? %>
+  <div class="alert" id="alert">
+    <span><%= alert %></span>
+    <button class="close-button" onclick="fadeOut('alert')">&times;</button>
+  </div>
+<% end %>
+
+<script>
+    function fadeOut(elementId) {
+        var element = document.getElementById(elementId);
+        var opacity = 1;
+
+        var fadeEffect = setInterval(function () {
+            if (opacity <= 0) {
+                clearInterval(fadeEffect);
+                element.style.display = "none";
+            } else {
+                element.style.opacity = opacity;
+                opacity -= 0.1;
+            }
+        }, 50);
+    }
+</script>

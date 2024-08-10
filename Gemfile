@@ -60,3 +60,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise', '~> 4.8'
 gem 'mysql2', '~> 0.5'
+gem 'kaminari'
+gem 'font-awesome-sass'

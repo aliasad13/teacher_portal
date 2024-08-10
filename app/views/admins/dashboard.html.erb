@@ -1,0 +1,42 @@
+<!-- app/views/admins/dashboard.html.erb -->
+<div class="container">
+  <table class="user-table">
+    <thead>
+    <tr>
+      <th>Sl. No.</th>
+      <th>Name</th>
+      <th>Role</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @users.each_with_index do |user, index| %>
+      <tr>
+        <td><%= @users.offset_value + index + 1 %></td>
+        <td>
+          <span class="user-icon"><%= user.email[0].upcase %></span>
+          <%= user.email %>
+        </td>
+        <td><%= user.role %></td>
+        <td>
+          <div class="role-dropdown">
+            <% unless user.admin? %>
+              <%= form_with url: update_role_user_path(user), id: 'role-form', method: :patch, local: true do |f| %>
+                <div class="form-group">
+                  <%= f.select :role, User::ROLES.map { |r| [r.capitalize, r] },
+                               { selected: user.role || User::ROLES.first },
+                               { class: "form-control" } %>
+                </div>
+                <%= f.submit 'Assign', class: "btn btn-primary" %>
+              <% end %>
+            <% end %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <div class="pagination">
+  <%= paginate @users %>
+  </div>
+</div>

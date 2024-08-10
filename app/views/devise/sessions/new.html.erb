@@ -3,11 +3,14 @@
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "login-form" }) do |f| %>
     <div class="login-field">
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Username", class: 'input'%>
+      <i class="fa-regular fa-user"></i>
+      <%= f.text_field :login, autofocus: true, autocomplete: "username", placeholder: "Username or Email" %>
     </div>
 
-    <div class="login-field">
-      <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password", class: 'input' %>
+    <div class="login-field" id="password-field">
+      <i class="fas fa-lock"></i>
+      <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password", class: 'input password-input' %>
+      <i class="fa-regular fa-eye toggle-password" onclick="togglePasswordVisibility(this)"></i>
     </div>
 
     <% if devise_mapping.rememberable? %>
@@ -18,17 +21,17 @@
         </div>
         <div>
           <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-          <%= link_to "Forgot your password?", new_password_path(resource_name), class: "remember-me" %><br />
+          <%= link_to "Forgot password?", new_password_path(resource_name), class: "remember-me" %><br />
         <% end %>
         </div>
       </div>
     <% end %>
 
     <div class="login-actions">
-      <%= f.submit "Login", class: "login-button" %>
+      <%= f.submit "Sign In", class: "login-button" %>
 
         <% if devise_mapping.registerable? && controller_name != 'registrations' %>
-          <%= link_to "Sign up", new_registration_path(resource_name), class: 'sign-up-button', id: 'sign-up-link'%><br />
+          <%= link_to "Register", new_registration_path(resource_name), class: 'sign-up-button', id: 'sign-up-link'%><br />
         <% end %>
 
 
@@ -38,3 +41,18 @@
   <%= render "devise/shared/links", class: "login-links" %>
 </div>
 
+<script>
+    function togglePasswordVisibility(icon) {
+        var passwordField = icon.previousElementSibling;
+
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            icon.classList.remove('fa-eye');
+            icon.classList.add('fa-eye-slash');
+        } else {
+            passwordField.type = "password";
+            icon.classList.remove('fa-eye-slash');
+            icon.classList.add('fa-eye');
+        }
+    }
+</script>

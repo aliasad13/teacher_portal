@@ -1,0 +1,98 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+
+
+.logo {
+    color: #d0021b;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #333;
+}
+
+.user-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+}
+
+.user-table th, .user-table td {
+    padding: 15px;
+    text-align: left;
+}
+
+.user-table th {
+    font-weight: bold;
+    color: #666;
+}
+
+.user-table tbody tr {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.user-icon {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+    line-height: 30px;
+    margin-right: 10px;
+}
+
+.role-dropdown {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-group {
+    margin-right: 10px;
+}
+
+select.form-control {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    font-size: 14px;
+}
+
+.btn-primary {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+    height: 34px;
+}
+
+.btn-primary:hover {
+    background-color: #555;
+}
+
+.modal-footer {
+    padding: 0;
+    border: none;
+    background: none;
+}
+
+#role-form{
+    display: flex
+}

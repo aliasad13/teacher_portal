@@ -5,29 +5,65 @@
     <%= render "devise/shared/error_messages", resource: resource %>
   </div>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "login-form" }) do |f| %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "login-form", id: "signup-form", data: { turbo: false } }) do |f| %>
 
-
+    <% if flash[:errors].present? %>
+      <div id="error_explanation" data-turbo-cache="false">
+        <ul>
+          <% flash[:errors].each do |error| %>
+            <li><%= error %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
     <div class="login-field">
-
+      <i class="fa-regular fa-envelope"></i>
       <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email" %>
+    </div>
+
+    <div class="login-field">
+      <i class="fa-regular fa-user"></i>
+      <%= f.text_field :username, autofocus: true, autocomplete: "username", placeholder: "Username" %>
     </div>
 
     <div class="login-field">
       <% if @minimum_password_length %>
 <!--        <em class="password-length">(<%#= @minimum_password_length %> characters minimum)</em>-->
       <% end %>
-      <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password(6 characters minimum)" %>
+      <i class="fa fa-lock"></i>
+      <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password(min 6)" %>
+      <i class="fa-regular fa-eye toggle-password" onclick="togglePasswordVisibility(this)"></i>
     </div>
 
     <div class="login-field">
+      <i class="fa fa-lock"></i>
       <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirm Password" %>
+      <i class="fa-regular fa-eye toggle-password" onclick="togglePasswordVisibility(this)"></i>
     </div>
-
+    <%= hidden_field_tag :submitted_from, 'signup_form' %>
     <div class="login-actions">
-      <%= f.submit "Sign Up", class: "login-button" %>
+      <%= f.submit "Create Account", class: "login-button" %>
     </div>
-  <% end %>
 
+  <% end %>
+  <div class="back-to-login">
+    <%= link_to "Sign In", new_user_session_path, id: 'back-to-login'%>
+  </div>
 </div>
+
+<script>
+    function togglePasswordVisibility(icon) {
+        var passwordField = icon.previousElementSibling;
+
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            icon.classList.remove('fa-eye');
+            icon.classList.add('fa-eye-slash');
+        } else {
+            passwordField.type = "password";
+            icon.classList.remove('fa-eye-slash');
+            icon.classList.add('fa-eye');
+        }
+    }
+</script>
