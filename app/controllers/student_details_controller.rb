@@ -1,4 +1,3 @@
-# app/controllers/student_details_controller.rb
 class StudentDetailsController < ApplicationController
   before_action :set_student_detail, only: [:show, :edit, :update, :destroy]
 
@@ -29,7 +28,7 @@ class StudentDetailsController < ApplicationController
 
   def edit
     respond_to do |format|
-      format.js # This will render `edit.js.erb`
+      format.js
     end
   end
 

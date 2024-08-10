@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   before_action :admin_only, only: [:index, :update_role]
 
-
   def home
     if current_user.teacher?
       redirect_to teacher_dashboard_path, notice: 'Welcome to the Teacher Dashboard.'
@@ -17,6 +16,7 @@ class UsersController < ApplicationController
       redirect_to home_users_path, alert: 'Please wait for the admin to assign a role'
     end
   end
+
   def update_role
     @user = User.find(params[:id])
     if @user.update(role: params[:role])
